@@ -88,13 +88,13 @@ D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\runtimes\win-x64
 D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental.csproj.AssemblyReference.cache
-D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\NewBikeView.baml
-D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeCatalog.g.cs
-D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\NewBikeView.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\NewBikeView.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\BikeCatalog.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\NewBikeView.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\App.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental_MarkupCompile.cache
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental_MarkupCompile.lref
-D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeCatalog.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\BikeCatalog.baml
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental.g.resources
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental.GeneratedMSBuildEditorConfig.editorconfig
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\BikeRental.AssemblyInfoInputs.cache

@@ -24,6 +24,6 @@ namespace BikeRental
             InitializeComponent();
             DataContext = new NewBikeViewModel(bikeService);
         }
-
     }
+
 }
