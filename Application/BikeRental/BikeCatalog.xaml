@@ -1,0 +1,97 @@
+﻿<Window x:Class="BikeRental.BikeCatalog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BikeRental"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="FontFamily" Value="Comic Sans"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+      
+    </Window.Resources>
+    <Viewbox>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="LightBlue" Offset="0.0" />
+                <GradientStop Color="SkyBlue" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="700" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1000" />
+            <ColumnDefinition Width="900" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Bikes" Style="{StaticResource ButtonStyle}" />
+                <Button Content="Bookings" Style="{StaticResource ButtonStyle}" />
+                <Button Content="Payments" Style="{StaticResource ButtonStyle}" />
+                <Button Content="Reviews" Style="{StaticResource ButtonStyle}" />
+            </StackPanel>
+        </Border>
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Bikes}"
+                 SelectedItem="{Binding SelectedBike}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2">
+                        <StackPanel Margin="5" Width="200" Height="150">
+                            <TextBlock FontSize="18" Text="{Binding Path=Model}" />
+                            <TextBlock Text="{Binding Path=PricePerDay}" />
+                            <TextBlock Text="{Binding Path=Image}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <StackPanel DataContext="{Binding SelectedBike}">
+                <TextBlock Text="Выбранный элемент"  />
+                <TextBlock Text="Модель" />
+                    <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock Text="Цена/день" />
+                    <TextBox Text="{Binding PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Описание" />
+                    <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
+
+
+                </StackPanel>
+        </Border>
+        <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">+</Button>
+                <Button Command="{Binding RemoveCommand}"
+            CommandParameter="{Binding SelectedBike}" Style="{StaticResource ButtonStyle}">-</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+        </Viewbox>
+</Window>
