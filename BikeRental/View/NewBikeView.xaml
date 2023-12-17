@@ -8,11 +8,11 @@
     <Grid>
         <StackPanel>
             <Label>Model:</Label>
-            <TextBox Text="{Binding NewBike.Model, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding NewItem.Model, UpdateSourceTrigger=PropertyChanged}" />
             <Label>Price per day:</Label>
-            <TextBox Text="{Binding NewBike.PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding NewItem.PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
             <Label>Description:</Label>
-            <TextBox Text="{Binding NewBike.Description, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Text="{Binding NewItem.Description, UpdateSourceTrigger=PropertyChanged}" />
             <Button Command="{Binding SelectImageCommand}">Select Image</Button>
 
             <Button Command="{Binding SaveCommand}">Save</Button>
