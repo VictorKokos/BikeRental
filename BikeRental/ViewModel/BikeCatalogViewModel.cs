@@ -15,10 +15,10 @@ namespace BikeRental
         public BikeCatalogViewModel(BikeService bikeService)
         {
             _bikeService = bikeService;
-            Bikes = new ObservableCollection<Bike>(_bikeService.GetAllBikes());
+            Bikes = new ObservableCollection<Bike>(_bikeService.GetAllItems());
 
             // Подписываемся на событие
-            _bikeService.BikeAdded += OnBikeAdded;
+            _bikeService.ItemAdded += OnBikeAdded;
         }
 
         private void OnBikeAdded(Bike bike)
@@ -64,7 +64,7 @@ namespace BikeRental
                       if (bike != null)
                       {
                           Bikes.Remove(bike);
-                          _bikeService.RemoveBike(bike);
+                          _bikeService.RemoveItem(bike);
                       }
                   },
                  (obj) => Bikes.Count > 0));

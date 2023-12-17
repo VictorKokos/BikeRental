@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace BikeRental
 {
-    public class BikeRepository
+    public class BikeRepository:IRepository<Bike>
     {
         private BikeRentalContext context;
 

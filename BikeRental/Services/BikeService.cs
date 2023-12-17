@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BikeRental
 {
-    public class BikeService
-{
+    public class BikeService: IService<Bike>
+    {
     private BikeRepository repository;
 
     public BikeService(BikeRepository repository)
@@ -16,34 +16,34 @@ namespace BikeRental
         this.repository = repository;
     }
 
-        public event Action<Bike> BikeAdded;
+        public event Action<Bike> ItemAdded;
 
-        public void AddBike(Bike bike)
+        public void AddItem(Bike bike)
         {
             // Добавьте велосипед в базу данных
             repository.Add(bike);
 
             // Оповещаем подписчиков о том, что велосипед был добавлен
-            BikeAdded?.Invoke(bike);
+            ItemAdded?.Invoke(bike);
         }
 
-        public void UpdateBike(Bike bike)
+        public void UpdateItem(Bike bike)
     {
         // Add business logic here (e.g., validation)
         repository.Update(bike);
     }
-        public void RemoveBike(Bike bike)
+        public void RemoveItem(Bike bike)
         {
             // Add business logic here (e.g., validation)
             repository.Remove(bike);
         }
 
-        public Bike GetBikeById(int id)
+        public Bike GetItemById(int id)
     {
         return repository.GetById(id);
     }
 
-    public IEnumerable<Bike> GetAllBikes()
+    public IEnumerable<Bike> GetAllItems()
     {
         return repository.GetAll();
     }

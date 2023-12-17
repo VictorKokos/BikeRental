@@ -53,8 +53,8 @@
                 <Button Content="Reviews" Style="{StaticResource ButtonStyle}" />
             </StackPanel>
         </Border>
-        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Bikes}"
-                 SelectedItem="{Binding SelectedBike}">
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}"
+                 SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
@@ -82,7 +82,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">+</Button>
                 <Button Command="{Binding RemoveCommand}"
-            CommandParameter="{Binding SelectedBike}" Style="{StaticResource ButtonStyle}">-</Button>
+            CommandParameter="{Binding SelectedItem}" Style="{StaticResource ButtonStyle}">-</Button>
             </StackPanel>
         </Border>
     </Grid>

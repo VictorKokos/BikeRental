@@ -1,5 +1,4 @@
-﻿using BikeRental;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using MVVM;
 using System.ComponentModel;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BikeRental
+namespace BikeRental.ViewModel
 {
     public class NewBikeViewModel : INotifyPropertyChanged
     {
@@ -21,9 +20,9 @@ namespace BikeRental
             _bikeService = bikeService;
             _newBike = new Bike();
         }
-        public NewBikeViewModel( )
+        public NewBikeViewModel()
         {
-          
+
         }
 
         private bool _isNewBike;
@@ -57,9 +56,9 @@ namespace BikeRental
                 NewBike.Image = $"http://localhost:3000/images/Bikes/{Path.GetFileName(imagePath)}";
             }
         }
-    
 
-    private RelayCommand selectImageCommand;
+
+        private RelayCommand selectImageCommand;
         public RelayCommand SelectImageCommand
         {
             get
@@ -91,11 +90,11 @@ namespace BikeRental
                     {
                         if (_isNewBike)
                         {
-                            _bikeService.AddBike(NewBike);
+                            _bikeService.AddItem(NewBike);
                         }
                         else
                         {
-                            _bikeService.UpdateBike(NewBike);
+                            _bikeService.UpdateItem(NewBike);
                         }
 
                         NewBike = new Bike(); // Сбрасываем NewBike после сохранения
