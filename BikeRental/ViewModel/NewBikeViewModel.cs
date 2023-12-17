@@ -4,7 +4,9 @@ using MVVM;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace BikeRental
@@ -43,13 +45,27 @@ namespace BikeRental
             }
         }
 
-        private RelayCommand selectImageCommand;
+        public async Task UploadImageAsync(string imagePath)
+        {
+            var client = new HttpClient();
+            var content = new MultipartFormDataContent();
+            content.Add(new ByteArrayContent(File.ReadAllBytes(imagePath)), "file", Path.GetFileName(imagePath));
+            var response = await client.PostAsync("http://localhost:3000/images/Bikes", content);
+            if (response.IsSuccessStatusCode)
+            {
+                // Сохраните URL изображения в базе данных
+                NewBike.Image = $"http://localhost:3000/images/Bikes/{Path.GetFileName(imagePath)}";
+            }
+        }
+    
+
+    private RelayCommand selectImageCommand;
         public RelayCommand SelectImageCommand
         {
             get
             {
                 return selectImageCommand ??
-                    (selectImageCommand = new RelayCommand(obj =>
+                    (selectImageCommand = new RelayCommand(async obj =>
                     {
                         var dialog = new OpenFileDialog
                         {
@@ -58,11 +74,10 @@ namespace BikeRental
                         if (dialog.ShowDialog() == true)
                         {
                             string imagePath = dialog.FileName;
-                            NewBike.Image = $"http://localhost:3000/images/Bikes/{Path.GetFileName(imagePath)}";
+                            await UploadImageAsync(imagePath);
                         }
                     }));
             }
-
         }
 
 
