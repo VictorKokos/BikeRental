@@ -16,7 +16,18 @@ namespace BikeRental
         {
             _bikeService = bikeService;
             Bikes = new ObservableCollection<Bike>(_bikeService.GetAllBikes());
+
+            // Подписываемся на событие
+            _bikeService.BikeAdded += OnBikeAdded;
         }
+
+        private void OnBikeAdded(Bike bike)
+        {
+            // Добавляем новый велосипед в коллекцию
+            Bikes.Add(bike);
+        }
+
+
 
         private RelayCommand addCommand;
         public RelayCommand AddCommand
@@ -60,7 +71,24 @@ namespace BikeRental
             }
         }
 
-      public Bike SelectedBike
+        // В BikeCatalogViewModel добавьте следующий код:
+        private RelayCommand _editCommand;
+        public RelayCommand EditCommand
+        {
+            get
+            {
+                return _editCommand ??
+                    (_editCommand = new RelayCommand(obj =>
+                    {
+                        var bikeForm = new NewBikeView(_bikeService, SelectedBike);
+                        bikeForm.Show();
+                    },
+                    (obj) => SelectedBike != null));
+            }
+        }
+
+
+        public Bike SelectedBike
 {
     get { return selectedBike; }
     set

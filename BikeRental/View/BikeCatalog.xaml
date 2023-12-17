@@ -42,8 +42,8 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1000" />
-            <ColumnDefinition Width="900" />
+            <ColumnDefinition Width="1500" />
+            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
         <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
             <StackPanel Orientation="Horizontal">
@@ -72,18 +72,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-                <StackPanel DataContext="{Binding SelectedBike}">
-                <TextBlock Text="Выбранный элемент"  />
-                <TextBlock Text="Модель" />
-                    <TextBox Text="{Binding Model, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBlock Text="Цена/день" />
-                    <TextBox Text="{Binding PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBlock Text="Описание" />
-                    <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
-
-
-                </StackPanel>
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <Button Command="{Binding EditCommand}">Редактировать</Button>
         </Border>
         <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
             <StackPanel Orientation="Horizontal">

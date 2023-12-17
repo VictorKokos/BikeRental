@@ -1,7 +1,9 @@
 ﻿using BikeRental;
 using MVVM;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace BikeRental
 {
@@ -18,6 +20,15 @@ namespace BikeRental
         public NewBikeViewModel( )
         {
           
+        }
+
+        private bool _isNewBike;
+
+        public NewBikeViewModel(BikeService bikeService, Bike bike = null)
+        {
+            _bikeService = bikeService;
+            _isNewBike = bike == null;
+            _newBike = bike ?? new Bike();
         }
 
         public Bike NewBike
@@ -38,7 +49,19 @@ namespace BikeRental
                 return _saveCommand ??
                     (_saveCommand = new RelayCommand(obj =>
                     {
-                        _bikeService.AddBike(NewBike);
+                        if (_isNewBike)
+                        {
+                            _bikeService.AddBike(NewBike);
+                        }
+                        else
+                        {
+                            _bikeService.UpdateBike(NewBike);
+                        }
+
+                        NewBike = new Bike(); // Сбрасываем NewBike после сохранения
+
+                        // Закрываем окно
+                        Application.Current.Windows.OfType<NewBikeView>().FirstOrDefault()?.Close();
                     }));
             }
         }

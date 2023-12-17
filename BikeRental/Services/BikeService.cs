@@ -16,13 +16,18 @@ namespace BikeRental
         this.repository = repository;
     }
 
-    public void AddBike(Bike bike)
-    {
-        // Add business logic here (e.g., validation)
-        repository.Add(bike);
-    }
+        public event Action<Bike> BikeAdded;
 
-    public void UpdateBike(Bike bike)
+        public void AddBike(Bike bike)
+        {
+            // Добавьте велосипед в базу данных
+            repository.Add(bike);
+
+            // Оповещаем подписчиков о том, что велосипед был добавлен
+            BikeAdded?.Invoke(bike);
+        }
+
+        public void UpdateBike(Bike bike)
     {
         // Add business logic here (e.g., validation)
         repository.Update(bike);
