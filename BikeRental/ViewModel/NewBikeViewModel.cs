@@ -1,6 +1,8 @@
 ﻿using BikeRental;
+using Microsoft.Win32;
 using MVVM;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -40,6 +42,29 @@ namespace BikeRental
                 OnPropertyChanged("NewBike");
             }
         }
+
+        private RelayCommand selectImageCommand;
+        public RelayCommand SelectImageCommand
+        {
+            get
+            {
+                return selectImageCommand ??
+                    (selectImageCommand = new RelayCommand(obj =>
+                    {
+                        var dialog = new OpenFileDialog
+                        {
+                            Filter = "Image files (*.png;*.jpg)|*.png;*.jpg"
+                        };
+                        if (dialog.ShowDialog() == true)
+                        {
+                            string imagePath = dialog.FileName;
+                            NewBike.Image = $"http://localhost:3000/images/Bikes/{Path.GetFileName(imagePath)}";
+                        }
+                    }));
+            }
+
+        }
+
 
         private RelayCommand _saveCommand;
         public RelayCommand SaveCommand

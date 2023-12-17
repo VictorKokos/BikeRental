@@ -37,7 +37,7 @@ namespace BikeRental
                 return addCommand ??
                     (addCommand = new RelayCommand(obj =>
                     {
-                        var bikeForm = new NewBikeView(_bikeService);
+                        var bikeForm = new NewBikeView(_bikeService, null);
                         bikeForm.Show();
                     }));
             }

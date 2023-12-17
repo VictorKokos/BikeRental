@@ -63,11 +63,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="2">
-                        <StackPanel Margin="5" Width="200" Height="150">
+                        <StackPanel Margin="5" Width="400" Height="350">
                             <TextBlock FontSize="18" Text="{Binding Path=Model}" />
                             <TextBlock Text="{Binding Path=PricePerDay}" />
-                            <TextBlock Text="{Binding Path=Image}" />
-                        </StackPanel>
+                                <Image MaxHeight="250" Source="{Binding Image}" />
+
+                                <TextBlock Text="{Binding Path=Description}" />
+
+                            </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>

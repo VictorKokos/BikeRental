@@ -13,6 +13,8 @@
             <TextBox Text="{Binding NewBike.PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
             <Label>Description:</Label>
             <TextBox Text="{Binding NewBike.Description, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Command="{Binding SelectImageCommand}">Select Image</Button>
+
             <Button Command="{Binding SaveCommand}">Save</Button>
         </StackPanel>
     </Grid>
