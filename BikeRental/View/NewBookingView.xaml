@@ -1,0 +1,21 @@
+﻿<Window x:Class="BikeRental.NewBookingView"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Width="400">
+
+    <Grid>
+        <StackPanel>
+            <Label>Booking Date:</Label>
+            <TextBox Text="{Binding NewItem.BookingDate, UpdateSourceTrigger=PropertyChanged}" />
+            <Label>Status:</Label>
+            <TextBox Text="{Binding NewItem.Status, UpdateSourceTrigger=PropertyChanged}" />
+            <Label>Rental Start Date:</Label>
+            <TextBox Text="{Binding NewItem.RentalStartDate, UpdateSourceTrigger=PropertyChanged}" />
+            <Label>Rental End Date:</Label>
+            <TextBox Text="{Binding NewItem.RentalEndDate, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Button Command="{Binding SaveCommand}">Save</Button>
+        </StackPanel>
+    </Grid>
+</Window>

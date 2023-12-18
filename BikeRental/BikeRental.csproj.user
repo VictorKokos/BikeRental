@@ -10,7 +10,22 @@
     <Compile Update="View\BikeItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\BookingItemView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\NewBikeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NewBookingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NewPaymentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NewReviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PaymentItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ReviewItemView.xaml.cs">
@@ -18,6 +33,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\BookingItemView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\ItemCatalog.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -25,6 +43,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\NewBikeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NewBookingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NewPaymentView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NewReviewView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PaymentItemView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ReviewItemView.xaml">

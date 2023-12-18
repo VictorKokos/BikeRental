@@ -8,8 +8,11 @@
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
 
-      
-            <BikeRental:ItemTemplateSelector x:Key="itemTemplateSelector">
+        <BikeRental:IsBookingTypeConverter x:Key="IsBookingTypeConverter"/>
+        <BikeRental:IsBookingTypeConverter x:Key="IsNullTypeConverter"/>
+
+
+        <BikeRental:ItemTemplateSelector x:Key="itemTemplateSelector">
                 <BikeRental:ItemTemplateSelector.BikeTemplate>
                     <DataTemplate DataType="{x:Type local:Bike}">
                         <BikeRental:BikeItemView />
@@ -20,7 +23,17 @@
                         <BikeRental:ReviewItemView />
                     </DataTemplate>
                 </BikeRental:ItemTemplateSelector.ReviewTemplate>
-            </BikeRental:ItemTemplateSelector>
+            <BikeRental:ItemTemplateSelector.BookingTemplate>
+                <DataTemplate DataType="{x:Type local:Booking}">
+                    <BikeRental:BookingItemView />
+                </DataTemplate>
+            </BikeRental:ItemTemplateSelector.BookingTemplate>
+            <BikeRental:ItemTemplateSelector.PaymentTemplate>
+                <DataTemplate DataType="{x:Type local:Payment}">
+                    <BikeRental:PaymentItemView />
+                </DataTemplate>
+            </BikeRental:ItemTemplateSelector.PaymentTemplate>
+        </BikeRental:ItemTemplateSelector>
 
 
 
@@ -64,8 +77,8 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Bikes" Click="ButtonSwitchToBike_Click" Style="{StaticResource ButtonStyle}" />
-                <Button Content="Bookings" Style="{StaticResource ButtonStyle}" />
-                <Button Content="Payments"  Style="{StaticResource ButtonStyle}" />
+            <Button Content="Bookings" Click="ButtonSwitchToBooking_Click" Style="{StaticResource ButtonStyle}" />
+            <Button Content="Payments"  Click="ButtonSwitchToPayment_Click"   Style="{StaticResource ButtonStyle}" />
             <Button Content="Reviews"  Click="ButtonSwitchToReview_Click" Style="{StaticResource ButtonStyle}" />
 
         </StackPanel>
@@ -80,9 +93,27 @@
             </ListBox>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">Добавить</Button>
-                <Button Command="{Binding RemoveCommand}"
-            CommandParameter="{Binding SelectedItem}" Style="{StaticResource ButtonStyle}">Удалить</Button>
-                <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
+            <Button Command="{Binding RemoveCommand}"
+CommandParameter="{Binding SelectedItem}">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                        <Setter Property="Content" Value="Удалить"/>
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItem, Converter={StaticResource IsBookingTypeConverter}}" Value="True">
+                                <Setter Property="Content" Value="Отменить"/>
+                            </DataTrigger>
+                 
+
+                            
+                            
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+
+            <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
             </StackPanel>
         </Grid>
   

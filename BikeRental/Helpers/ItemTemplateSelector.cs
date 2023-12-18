@@ -12,13 +12,18 @@ namespace BikeRental.View
     {
         public DataTemplate BikeTemplate { get; set; }
         public DataTemplate ReviewTemplate { get; set; }
-
+        public DataTemplate BookingTemplate { get; set; }
+        public DataTemplate PaymentTemplate { get; set; }
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (item is Bike)
                 return BikeTemplate;
             else if (item is Review)
                 return ReviewTemplate;
+            else if (item is Booking)
+                return BookingTemplate;
+            else if (item is Payment)
+                return PaymentTemplate;
             else
                 return base.SelectTemplate(item, container);
         }

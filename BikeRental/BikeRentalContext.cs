@@ -9,6 +9,10 @@ namespace BikeRental
         public DbSet<Bike> Bike { get; set; }
         public DbSet<Review> Review { get; set; }
 
+        public DbSet<Payment> Payment { get; set; }
+
+        public DbSet<Booking> Booking { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             try

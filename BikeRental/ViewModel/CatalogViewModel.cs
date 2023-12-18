@@ -44,6 +44,13 @@ namespace BikeRental.ViewModel
                             var bikeForm = new NewBikeView(_service as BikeService, null);
                             bikeForm.Show();
                         }
+                        if (typeof(TItem) == typeof(Review) && selectedItem!=null)
+                        {
+                            var reviewForm = new NewReviewView(_service as ReviewService, selectedItem as Review);
+                            reviewForm.Show();
+                        }
+
+
                     }));
             }
         }
@@ -68,7 +75,10 @@ namespace BikeRental.ViewModel
                       TItem item = obj as TItem;
                       if (item != null)
                       {
-                          Items.Remove(item);
+                          if (!(item is Booking))
+                          {
+                              Items.Remove(item);
+                          }
                           _service.RemoveItem(item);
                       }
                   },
@@ -90,10 +100,26 @@ namespace BikeRental.ViewModel
                     {
                         if (typeof(TItem) == typeof(Bike) && _service is BikeService bikeService)
                         {
-                            var bikeForm = new NewBikeView(_service as BikeService, selectedItem as Bike);
-                            bikeForm.Show();
+                            var newForm = new NewBikeView(_service as BikeService, selectedItem as Bike);
+                            newForm.Show();
+                        }
+                        if (typeof(TItem) == typeof(Review))
+                        {
+                            var newForm = new NewReviewView(_service as ReviewService, selectedItem as Review);
+                            newForm.Show();
+                        }
+                        if (typeof(TItem) == typeof(Booking))
+                        {
+                            var newForm = new NewBookingView(_service as BookingService, selectedItem as Booking);
+                            newForm.Show();
+                        }
+                         if (typeof(TItem) == typeof(Payment) && selectedItem!=null)
+                        {
+                            var newForm = new NewPaymentView(_service as PaymentService, selectedItem as Payment);
+                            newForm.Show();
                         }
                     },
+
                     (obj) => SelectedItem != null));
             }
         }
