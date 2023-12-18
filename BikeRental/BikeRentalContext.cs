@@ -7,6 +7,7 @@ namespace BikeRental
     public class BikeRentalContext : DbContext
     {
         public DbSet<Bike> Bike { get; set; }
+        public DbSet<Review> Review { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

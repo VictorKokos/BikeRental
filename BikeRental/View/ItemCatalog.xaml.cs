@@ -6,9 +6,9 @@ using System.Windows;
 
 namespace BikeRental
 {
-    public partial class BikeCatalog : Window
+    public partial class ItemCatalog : Window
     {
-        public BikeCatalog()
+        public ItemCatalog()
         {
             InitializeComponent();
 
@@ -23,9 +23,6 @@ namespace BikeRental
             {
                 string logPath = @"D:\Work\Kusrach4\Application\BikeRental\log.txt";
                 File.WriteAllText(logPath, $"Произошла ошибка: {ex.Message}");
-
-                // Если вы хотите создать CatalogViewModel без сервиса,
-                // вам нужно добавить конструктор без параметров в CatalogViewModel
                 DataContext = new CatalogViewModel<Bike, BikeService>();
             }
         }

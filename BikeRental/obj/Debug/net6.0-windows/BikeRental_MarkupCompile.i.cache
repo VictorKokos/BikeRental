@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Work\Kusrach4\BikeRental\BikeRental\App.xaml
-2-146680887
+4-582584931
 
-17-2036020789
+22575594508
 2141699123240
-View\BikeCatalog.xaml;View\NewBikeView.xaml;
+View\BikeItemView.xaml;View\ItemCatalog.xaml;View\NewBikeView.xaml;View\ReviewItemView.xaml;
 
-False
+True
 

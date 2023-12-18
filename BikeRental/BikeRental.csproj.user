@@ -7,15 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\BikeItemView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\NewBikeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ReviewItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\BikeCatalog.xaml">
+    <Page Update="View\ItemCatalog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\BikeItemView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\NewBikeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ReviewItemView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
