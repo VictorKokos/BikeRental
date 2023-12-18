@@ -13,6 +13,14 @@ namespace BikeRental
 
         public DbSet<Booking> Booking { get; set; }
 
+        public DbSet<UserAccount> UserAccount { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserAccount>().HasKey(u => u.UserId);
+        }
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             try
@@ -21,7 +29,6 @@ namespace BikeRental
             }
             catch (Exception ex)
             {
-                // Замените на ваш путь к файлу
                 string logPath = @"D:\Work\Kusrach4\Application\BikeRental\log.txt";
                 File.WriteAllText(logPath, $"Произошла ошибка при подключении к базе данных: {ex.Message}");
             }

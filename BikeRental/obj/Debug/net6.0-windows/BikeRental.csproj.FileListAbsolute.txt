@@ -121,3 +121,7 @@ D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\NewPaymentV
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\NewPaymentView.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentItemView.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentItemView.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignUpView.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignUpView.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignInView.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignInView.baml
