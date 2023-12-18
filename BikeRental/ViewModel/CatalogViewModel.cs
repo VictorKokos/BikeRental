@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using MVVM;
+using System.Windows;
+using System.Windows.Input;
 
 namespace BikeRental.ViewModel
 {
@@ -73,6 +75,10 @@ namespace BikeRental.ViewModel
                  (obj) => Items.Count > 0));
             }
         }
+
+  
+  
+
 
         private RelayCommand _editCommand;
         public RelayCommand EditCommand

@@ -1,13 +1,59 @@
 ﻿using BikeRental;
 using BikeRental.ViewModel;
+using MVVM;
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace BikeRental
 {
     public partial class ItemCatalog : Window
     {
+        private void ButtonSwitchToReview_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            // Создать новое окно с ReviewService в качестве DataContext
+            var context = new BikeRentalContext();
+            var repository = new ReviewRepository(context);
+            var service = new ReviewService(repository);
+            var newWindow = new ItemCatalog
+            {
+                DataContext = new CatalogViewModel<Review, ReviewService>(service)
+            };
+
+            // Открыть новое окно
+            newWindow.Show();
+            // Закрыть текущее окно
+            this.Close();
+
+        
+        }
+
+        private void ButtonSwitchToBike_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            // Создать новое окно с ReviewService в качестве DataContext
+            var context = new BikeRentalContext();
+            var repository = new BikeRepository(context);
+            var service = new BikeService(repository);
+            var newWindow = new ItemCatalog
+            {
+                DataContext = new CatalogViewModel<Bike, BikeService>(service)
+            };
+
+            // Открыть новое окно
+            newWindow.Show();
+            // Закрыть текущее окно
+            this.Close();
+
+
+        }
+
+
         public ItemCatalog()
         {
             InitializeComponent();
@@ -26,6 +72,10 @@ namespace BikeRental
                 DataContext = new CatalogViewModel<Bike, BikeService>();
             }
         }
-    }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }

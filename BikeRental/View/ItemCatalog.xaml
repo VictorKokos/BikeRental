@@ -7,15 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
     <Window.Resources>
+
+      
+            <BikeRental:ItemTemplateSelector x:Key="itemTemplateSelector">
+                <BikeRental:ItemTemplateSelector.BikeTemplate>
+                    <DataTemplate DataType="{x:Type local:Bike}">
+                        <BikeRental:BikeItemView />
+                    </DataTemplate>
+                </BikeRental:ItemTemplateSelector.BikeTemplate>
+                <BikeRental:ItemTemplateSelector.ReviewTemplate>
+                    <DataTemplate DataType="{x:Type local:Review}">
+                        <BikeRental:ReviewItemView />
+                    </DataTemplate>
+                </BikeRental:ItemTemplateSelector.ReviewTemplate>
+            </BikeRental:ItemTemplateSelector>
+
+
+
+
         <Style x:Key="ButtonStyle" TargetType="Button">
-            
             <Setter Property="Background" Value="LightBlue" />
-            <Setter Property="Width" Value="300" />
+            <Setter Property="Width" Value="Auto" />
             <Setter Property="Height" Value="Auto" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Padding" Value="10" />
-            <Setter Property="FontFamily" Value="Comic Sans"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -26,57 +43,47 @@
                 </Setter.Value>
             </Setter>
         </Style>
-      
+
     </Window.Resources>
-    <Viewbox>
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="LightBlue" Offset="0.0" />
-                <GradientStop Color="SkyBlue" Offset="1.0" />
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="700" />
-            <RowDefinition Height="100" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1500" />
-            <ColumnDefinition Width="400" />
-        </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Bikes" Style="{StaticResource ButtonStyle}" />
+
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="LightBlue" Offset="0.0" />
+                    <GradientStop Color="SkyBlue" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Bikes" Click="ButtonSwitchToBike_Click" Style="{StaticResource ButtonStyle}" />
                 <Button Content="Bookings" Style="{StaticResource ButtonStyle}" />
-                <Button Content="Payments" Style="{StaticResource ButtonStyle}" />
-                <Button Content="Reviews" Style="{StaticResource ButtonStyle}" />
-            </StackPanel>
-        </Border>
+                <Button Content="Payments"  Style="{StaticResource ButtonStyle}" />
+            <Button Content="Reviews"  Click="ButtonSwitchToReview_Click" Style="{StaticResource ButtonStyle}" />
+
+        </StackPanel>
             <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}"
-         SelectedItem="{Binding SelectedItem}">
+         SelectedItem="{Binding SelectedItem}"
+         ItemTemplateSelector="{StaticResource itemTemplateSelector}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="{x:Type local:Bike}">
-                        <BikeRental:BikeItemView />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
             </ListBox>
-
-
-
-            <Border Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="1">
-            <StackPanel Orientation="Horizontal">
-                    <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">Добавить</Button>
-                    <Button Command="{Binding RemoveCommand}"
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">Добавить</Button>
+                <Button Command="{Binding RemoveCommand}"
             CommandParameter="{Binding SelectedItem}" Style="{StaticResource ButtonStyle}">Удалить</Button>
-                    <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
-                </StackPanel>
-        </Border>
-    </Grid>
-        </Viewbox>
+                <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
+            </StackPanel>
+        </Grid>
+  
 </Window>
