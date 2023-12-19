@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using MVVM;
 using System.Windows;
 using System.Windows.Input;
+using BikeRental.View;
 
 namespace BikeRental.ViewModel
 {
@@ -123,6 +124,30 @@ namespace BikeRental.ViewModel
                     (obj) => SelectedItem != null));
             }
         }
+
+
+
+        private RelayCommand _bookCommand;
+        public RelayCommand BookCommand
+        {
+            get
+            {
+                return _bookCommand ??
+                    (_bookCommand = new RelayCommand(obj =>
+                    {
+                        if (SessionState.CurrentUser.Role == "client")
+                        {
+                            var bookingWindow = new BookingWindow(selectedItem as Bike);
+                            bookingWindow.Show();
+                        }
+
+                    },
+
+                    (obj) => SelectedItem != null));
+            }
+        }
+
+
 
         public TItem SelectedItem
         {

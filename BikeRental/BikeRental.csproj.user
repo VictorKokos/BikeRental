@@ -7,10 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\AlarmWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\BikeItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\BookingItemView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\BookingWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\NewBikeView.xaml.cs">
@@ -28,6 +34,9 @@
     <Compile Update="View\PaymentItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\PaymentView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\ReviewItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -39,7 +48,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\AlarmWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\BookingItemView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\BookingWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ItemCatalog.xaml">
@@ -61,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PaymentItemView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PaymentView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ReviewItemView.xaml">

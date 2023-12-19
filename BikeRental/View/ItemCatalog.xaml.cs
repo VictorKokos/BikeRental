@@ -1,4 +1,5 @@
 ﻿using BikeRental;
+using BikeRental.View;
 using BikeRental.ViewModel;
 using MVVM;
 using System;
@@ -95,7 +96,15 @@ namespace BikeRental
         }
 
 
-        public ItemCatalog()
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            SessionState.IsLoggedIn = false;
+            SignUpView signUpView = new SignUpView();
+            signUpView.Show();
+            this.Close();
+        }
+
+            public ItemCatalog()
         {
             InitializeComponent();
 

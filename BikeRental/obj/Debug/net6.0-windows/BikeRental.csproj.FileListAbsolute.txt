@@ -125,3 +125,9 @@ D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignUpView.
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignUpView.baml
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignInView.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\SignInView.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\BookingWindow.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\BookingWindow.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentView.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentView.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\AlarmWindow.baml
+D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\AlarmWindow.g.cs

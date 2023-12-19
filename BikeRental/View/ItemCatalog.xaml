@@ -12,6 +12,7 @@
         <BikeRental:IsBookingTypeConverter x:Key="IsNullTypeConverter"/>
 
         <BikeRental:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>
+        <BikeRental:RoleToVisibilityInverseConverter x:Key="RoleToVisibilityInverseConverter"/>
 
 
 
@@ -79,19 +80,24 @@
                 <ColumnDefinition Width="400" />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Bikes" Click="ButtonSwitchToBike_Click" Style="{StaticResource ButtonStyle}" />
-            <Button Content="Bookings" Click="ButtonSwitchToBooking_Click" Style="{StaticResource ButtonStyle}" />
-            <Button Content="Payments"  Click="ButtonSwitchToPayment_Click"   Style="{StaticResource ButtonStyle}" />
-            <Button Content="Reviews"  Click="ButtonSwitchToReview_Click" Style="{StaticResource ButtonStyle}" />
+            <Button  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"
+                     Content="Bikes" Click="ButtonSwitchToBike_Click" Style="{StaticResource ButtonStyle}" />
+            <Button  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"
+                     Content="Bookings" Click="ButtonSwitchToBooking_Click" Style="{StaticResource ButtonStyle}" />
+            <Button  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"
+                     Content="Payments"  Click="ButtonSwitchToPayment_Click"   Style="{StaticResource ButtonStyle}" />
+            <Button  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"
+                     Content="Reviews"  Click="ButtonSwitchToReview_Click" Style="{StaticResource ButtonStyle}" />
+            <Button  Content="Выйти"  Click="ButtonExit_Click" Style="{StaticResource ButtonStyle}" />
 
         </StackPanel>
             <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}"
          SelectedItem="{Binding SelectedItem}"
-         ItemTemplateSelector="{StaticResource itemTemplateSelector}">
+         ItemTemplateSelector="{StaticResource itemTemplateSelector}" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" MaxWidth="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" />
+                </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
             </ListBox>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -99,7 +105,7 @@
         Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"/>
 
             <Button Command="{Binding RemoveCommand}"
-CommandParameter="{Binding SelectedItem}">
+CommandParameter="{Binding SelectedItem}"  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
                         <Setter Property="Content" Value="Удалить"/>
@@ -118,8 +124,12 @@ CommandParameter="{Binding SelectedItem}">
             </Button>
 
 
-            <Button Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
-            </StackPanel>
+            <Button  Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}" Command="{Binding EditCommand}" Style="{StaticResource ButtonStyle}">Редактировать</Button>
+
+            <Button Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityInverseConverter}}"
+                    Content="Забронировать" Style="{StaticResource ButtonStyle}" Command="{Binding BookCommand}"
+             CommandParameter="{Binding}" />
+        </StackPanel>
         </Grid>
   
 </Window>

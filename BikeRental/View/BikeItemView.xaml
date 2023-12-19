@@ -12,6 +12,7 @@
             <TextBlock Text="{Binding Path=PricePerDay}" />
             <Image MaxHeight="250" Source="{Binding Image}" />
             <TextBlock Text="{Binding Path=Description}" />
+           
         </StackPanel>
     </Border>
 </UserControl>
