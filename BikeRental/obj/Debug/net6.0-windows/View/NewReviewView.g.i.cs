@@ -52,7 +52,7 @@ namespace BikeRental {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BikeRental;V1.0.0.0;component/view/newreviewview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BikeRental;component/view/newreviewview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\NewReviewView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

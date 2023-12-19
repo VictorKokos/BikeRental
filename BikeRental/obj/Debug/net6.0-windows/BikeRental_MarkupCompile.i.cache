@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Work\Kusrach4\BikeRental\BikeRental\App.xaml
 11-485404624
 
-40-354090126
+43-1741227445
 2141699123240
 View\BikeItemView.xaml;View\BookingItemView.xaml;View\ItemCatalog.xaml;View\NewBikeView.xaml;View\NewBookingView.xaml;View\NewPaymentView.xaml;View\NewReviewView.xaml;View\PaymentItemView.xaml;View\ReviewItemView.xaml;View\SignInView.xaml;View\SignUpView.xaml;
 
-True
+False
 

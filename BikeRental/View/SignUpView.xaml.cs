@@ -44,7 +44,7 @@ namespace BikeRental.View
             }
 
             var viewModel = this.DataContext as SignUpAndInViewModel;
-            if (viewModel != null && viewModel.IsLoggedIn)
+            if (viewModel != null && SessionState.IsLoggedIn)
             {
                 itemCatalog = new ItemCatalog();
                 itemCatalog.Show();

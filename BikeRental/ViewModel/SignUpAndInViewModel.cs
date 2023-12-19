@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BikeRental;
+using BikeRental.View;
 using MVVM;
 
 namespace BikeRental.ViewModel
@@ -29,17 +30,7 @@ namespace BikeRental.ViewModel
             }
         }
 
-        private bool isLoggedIn;
-
-        public bool IsLoggedIn
-        {
-            get { return isLoggedIn; }
-            set
-            {
-                isLoggedIn = value;
-                OnPropertyChanged("IsLoggedIn");
-            }
-        }
+     
 
 
         public ICommand SignUpCommand
@@ -77,17 +68,18 @@ namespace BikeRental.ViewModel
                             userAccountService.AddItem(UserAccount);
 
                             // Если все поля UserAccount не равны null, установить IsLoggedIn в true
-                            IsLoggedIn = true;
+                            SessionState.IsLoggedIn = true;
+                            SessionState.CurrentUser = userAccount;
                         }
                         else
                         {
                             // Если любое поле UserAccount равно null, установить IsLoggedIn в false
-                            IsLoggedIn = false;
+                            SessionState.IsLoggedIn = false;
                         }
                     },
                     canExecute: parameter =>
                     {
-                        if (!IsLoggedIn)
+                        if (!SessionState.IsLoggedIn)
                         {
                             return true;
                         }// Замените это на вашу логику проверки
@@ -121,11 +113,12 @@ namespace BikeRental.ViewModel
                             // Проверка, совпадает ли хэш введенного пароля с хэшем в базе данных
                             if (hashedPassword == userAccount.Password)
                             {
-                                IsLoggedIn = true;
+                                SessionState.IsLoggedIn = true;
+                                SessionState.CurrentUser = userAccount;
                             }
                             else
                             {
-                                IsLoggedIn = false;
+                                SessionState.IsLoggedIn = false;
                             }
                         }
                     },

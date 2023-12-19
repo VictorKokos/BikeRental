@@ -11,6 +11,9 @@
         <BikeRental:IsBookingTypeConverter x:Key="IsBookingTypeConverter"/>
         <BikeRental:IsBookingTypeConverter x:Key="IsNullTypeConverter"/>
 
+        <BikeRental:RoleToVisibilityConverter x:Key="RoleToVisibilityConverter"/>
+
+
 
         <BikeRental:ItemTemplateSelector x:Key="itemTemplateSelector">
                 <BikeRental:ItemTemplateSelector.BikeTemplate>
@@ -92,7 +95,9 @@
                 </ListBox.ItemsPanel>
             </ListBox>
             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}">Добавить</Button>
+            <Button Content="Добавить" Command="{Binding AddCommand}" Style="{StaticResource ButtonStyle}"
+        Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityConverter}}"/>
+
             <Button Command="{Binding RemoveCommand}"
 CommandParameter="{Binding SelectedItem}">
                 <Button.Style>
