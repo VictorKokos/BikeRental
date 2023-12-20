@@ -14,11 +14,15 @@ namespace BikeRental.ViewModel
     public class BookingViewModel : INotifyPropertyChanged
     {
         private Bike _selectedBike;
-        private DateTime _rentalStartDate;
-        private DateTime _rentalEndDate;
+        private DateTime _rentalStartDate = DateTime.Now;
+        private DateTime _rentalEndDate = DateTime.Now;
         private BookingService _bookingService;
         private PaymentService _paymentService;
-
+        private Booking booking = new Booking
+        {
+            RentalStartDate = DateTime.Now,
+            RentalEndDate = DateTime.Now
+        };
         public Bike SelectedBike
         {
             get { return _selectedBike; }
@@ -35,6 +39,16 @@ namespace BikeRental.ViewModel
             set
             {
                 _rentalStartDate = value;
+                booking.RentalStartDate = value; // Обновляем свойство StartDate объекта Booking
+                OnPropertyChanged();
+            }
+        }
+        public Booking Booking
+        {
+            get { return booking; }
+            set
+            {
+                booking = value;
                 OnPropertyChanged();
             }
         }
@@ -45,6 +59,7 @@ namespace BikeRental.ViewModel
             set
             {
                 _rentalEndDate = value;
+                booking.RentalEndDate = value; // Обновляем свойство EndDate объекта Booking
                 OnPropertyChanged();
             }
         }
@@ -59,7 +74,8 @@ namespace BikeRental.ViewModel
 
             BookCommand = new RelayCommand(obj =>
             {
-                var paymentWindow = new PaymentView(new PaymentViewModel(_bookingService, _paymentService, SelectedBike, new Booking()));
+           
+                var paymentWindow = new PaymentView(new PaymentViewModel(_bookingService, _paymentService, SelectedBike, booking));
                 paymentWindow.Show();
             });
         }

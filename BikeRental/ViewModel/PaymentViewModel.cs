@@ -58,6 +58,35 @@ namespace BikeRental.ViewModel
             }
         }
 
+        public DateTime RentalStartDate
+        {
+            get { return _rentalStartDate; }
+            set
+            {
+                _rentalStartDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime RentalEndDate
+        {
+            get { return _rentalEndDate; }
+            set
+            {
+                _rentalEndDate = value;
+                OnPropertyChanged();
+            }
+        }
+        public Booking NewBooking
+        {
+            get { return _newBooking; }
+            set
+            {
+                _newBooking = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public PaymentViewModel(BookingService bookingService, PaymentService paymentService, Bike selectedBike, Booking newBooking)
         {
@@ -82,8 +111,8 @@ namespace BikeRental.ViewModel
                         {
                             BikeId = _selectedBike.Id,
                             ClientId = SessionState.CurrentUser.UserId, // предполагая, что у вас есть текущий пользователь в SessionState
-                            RentalStartDate = _rentalStartDate,
-                            RentalEndDate = _rentalEndDate,
+                            RentalStartDate = NewBooking.RentalStartDate,
+                            RentalEndDate = NewBooking.RentalEndDate,
                             Status = "Pending" // или любой другой начальный статус
                         };
 
@@ -94,7 +123,7 @@ namespace BikeRental.ViewModel
                         var payment = new Payment
                         {
                             BookingId = booking.Id,
-                            Amount = _selectedBike.PricePerDay * (_rentalEndDate - _rentalStartDate).Days,
+                            Amount = _selectedBike.PricePerDay * (NewBooking.RentalEndDate - NewBooking.RentalStartDate).Days,
                             PaymentDate = DateTime.Now
                         };
 
@@ -105,10 +134,7 @@ namespace BikeRental.ViewModel
                         alarm.Show();
                     },
 
-                    (obj) => !string.IsNullOrWhiteSpace(_cardNumber) &&
-                              !string.IsNullOrWhiteSpace(_cardHolderName) &&
-                              !string.IsNullOrWhiteSpace(_expiryDate) &&
-                              !string.IsNullOrWhiteSpace(_cvv)));
+                    (obj) => (true)));
             }
         }
 

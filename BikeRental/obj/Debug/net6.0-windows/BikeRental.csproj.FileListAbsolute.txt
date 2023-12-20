@@ -131,3 +131,6 @@ D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentView
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\PaymentView.g.cs
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\AlarmWindow.baml
 D:\Work\Kusrach4\BikeRental\BikeRental\obj\Debug\net6.0-windows\View\AlarmWindow.g.cs
+D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\MaterialDesignColors.dll
+D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\MaterialDesignThemes.Wpf.dll
+D:\Work\Kusrach4\BikeRental\BikeRental\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll

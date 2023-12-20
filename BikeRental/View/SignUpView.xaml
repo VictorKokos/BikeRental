@@ -2,36 +2,47 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BikeRental.View"
-        mc:Ignorable="d"
-        Title="SignUpView" Height="450" Width="400">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Margin="10">
-            <Label Content="Login:"/>
-            <TextBox Text="{Binding UserAccount.UserLogin}"/>
-            <Label Content="Password:"/>
-            <PasswordBox x:Name="passwordBox"/>
-            <Label Content="First Name:"/>
-            <TextBox Text="{Binding UserAccount.FirstName}"/>
-            <Label Content="Last Name:"/>
-            <TextBox Text="{Binding UserAccount.LastName}"/>
-            <Label Content="Phone Number:"/>
-            <TextBox Text="{Binding UserAccount.PhoneNumber}"/>
-            <Label Content="Email:"/>
-            <TextBox Text="{Binding UserAccount.Email}"/>
-       
-        </StackPanel>
-        <Button Grid.Row="1" Command="{Binding SignUpCommand}" CommandParameter="{Binding ElementName=passwordBox}" 
-                Content="Sign Up" Click="SignUpButton_Click" Margin="10"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Already have an account? "/>
-            <Button Content="Sign In"  Click="SignInButton_Click"/>
-        </StackPanel>
-    </Grid>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Width="500" Height="500">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <materialDesign:ColorZone Mode="PrimaryMid">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="1" Margin="20">
+                <Label Foreground="White" Content="Login:"/>
+                <TextBox Text="{Binding UserAccount.UserLogin}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White" Content="Password:"/>
+                <PasswordBox x:Name="passwordBox" Foreground="Black" Background="White"/>
+                <Label Foreground="White" Content="First Name:"/>
+                <TextBox Text="{Binding UserAccount.FirstName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White" Content="Last Name:"/>
+                <TextBox Text="{Binding UserAccount.LastName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White" Content="Phone Number:"/>
+                <TextBox Text="{Binding UserAccount.PhoneNumber}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White" Content="Email:"/>
+                <TextBox Text="{Binding UserAccount.Email}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Button Margin="10" Command="{Binding SignUpCommand}" CommandParameter="{Binding ElementName=passwordBox}" Content="Sign Up" Style="{StaticResource MaterialDesignRaisedButton}" Click="SignUpButton_Click"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Already have an account? " Foreground="White"/>
+                    <Button Content="Sign In" Click="SignInButton_Click" Style="{StaticResource MaterialDesignFlatButton}" Background="White" Foreground="Black"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </materialDesign:ColorZone>
 </Window>

@@ -1,21 +1,34 @@
 ﻿<Window x:Class="BikeRental.NewBookingView"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Width="400">
 
-    <Grid>
-        <StackPanel>
-            <Label>Booking Date:</Label>
-            <TextBox Text="{Binding NewItem.BookingDate, UpdateSourceTrigger=PropertyChanged}" />
-            <Label>Status:</Label>
-            <TextBox Text="{Binding NewItem.Status, UpdateSourceTrigger=PropertyChanged}" />
-            <Label>Rental Start Date:</Label>
-            <TextBox Text="{Binding NewItem.RentalStartDate, UpdateSourceTrigger=PropertyChanged}" />
-            <Label>Rental End Date:</Label>
-            <TextBox Text="{Binding NewItem.RentalEndDate, UpdateSourceTrigger=PropertyChanged}" />
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 
-            <Button Command="{Binding SaveCommand}">Save</Button>
-        </StackPanel>
-    </Grid>
+    <materialDesign:ColorZone Mode="PrimaryMid">
+        <Grid>
+            <StackPanel>
+                <Label Foreground="White">Booking Date:</Label>
+                <TextBox Text="{Binding NewItem.BookingDate, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White">Status:</Label>
+                <TextBox Text="{Binding NewItem.Status, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White">Rental Start Date:</Label>
+                <TextBox Text="{Binding NewItem.RentalStartDate, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White">Rental End Date:</Label>
+                <TextBox Text="{Binding NewItem.RentalEndDate, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Button Command="{Binding SaveCommand}" Style="{StaticResource MaterialDesignRaisedButton}">Save</Button>
+            </StackPanel>
+        </Grid>
+    </materialDesign:ColorZone>
 </Window>

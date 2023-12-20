@@ -1,21 +1,34 @@
-﻿<!-- NewBikeView.xaml -->
-<Window x:Class="BikeRental.NewBikeView"
-       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+﻿<Window x:Class="BikeRental.NewBikeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Width="400">
 
-    <Grid>
-        <StackPanel>
-            <Label>Model:</Label>
-            <TextBox Text="{Binding NewItem.Model, UpdateSourceTrigger=PropertyChanged}" />
-            <Label>Price per day:</Label>
-            <TextBox Text="{Binding NewItem.PricePerDay, UpdateSourceTrigger=PropertyChanged}" />
-            <Label>Description:</Label>
-            <TextBox Text="{Binding NewItem.Description, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Command="{Binding SelectImageCommand}">Select Image</Button>
 
-            <Button Command="{Binding SaveCommand}">Save</Button>
-        </StackPanel>
-    </Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <materialDesign:ColorZone Mode="PrimaryMid">
+        <Grid>
+            <StackPanel>
+                <Label Foreground="White">Model:</Label>
+                <TextBox Text="{Binding NewItem.Model, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White">Price per day:</Label>
+                <TextBox Text="{Binding NewItem.PricePerDay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Label Foreground="White">Description:</Label>
+                <TextBox Text="{Binding NewItem.Description, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="Black" Background="White"/>
+                <Button Command="{Binding SelectImageCommand}" Style="{StaticResource MaterialDesignRaisedButton}">Select Image</Button>
+                <Button Command="{Binding SaveCommand}" Style="{StaticResource MaterialDesignRaisedButton}">Save</Button>
+            </StackPanel>
+        </Grid>
+    </materialDesign:ColorZone>
 </Window>
