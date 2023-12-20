@@ -147,6 +147,26 @@ namespace BikeRental.ViewModel
             }
         }
 
+        private RelayCommand _reviewCommand;
+        public RelayCommand ReviewCommand
+        {
+            get
+            {
+                return _reviewCommand ??
+                    (_reviewCommand = new RelayCommand(obj =>
+                    {
+                        if (SessionState.CurrentUser.Role == "client")
+                        {
+                            var reviewWindow = new BikeReviewView(selectedItem as Bike);
+                            reviewWindow.Show();
+                        }
+
+                    },
+
+                    (obj) => SelectedItem != null));
+            }
+        }
+
 
 
         public TItem SelectedItem

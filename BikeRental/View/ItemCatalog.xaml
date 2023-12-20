@@ -129,6 +129,9 @@ CommandParameter="{Binding SelectedItem}"  Visibility="{Binding Source={x:Static
             <Button Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityInverseConverter}}"
                     Content="Забронировать" Style="{StaticResource ButtonStyle}" Command="{Binding BookCommand}"
              CommandParameter="{Binding}" />
+            <Button Visibility="{Binding Source={x:Static BikeRental:SessionState.CurrentUser}, Path=Role, Converter={StaticResource RoleToVisibilityInverseConverter}}"
+           Content="Отзывы" Style="{StaticResource ButtonStyle}" Command="{Binding ReviewCommand}"
+    CommandParameter="{Binding}" />
         </StackPanel>
         </Grid>
   

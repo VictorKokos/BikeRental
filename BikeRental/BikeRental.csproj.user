@@ -13,6 +13,9 @@
     <Compile Update="View\BikeItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\BikeReviewView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\BookingItemView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\AlarmWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\BikeReviewView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\BookingItemView.xaml">
