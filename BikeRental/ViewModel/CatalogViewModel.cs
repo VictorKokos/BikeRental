@@ -45,10 +45,14 @@ namespace BikeRental.ViewModel
                             var bikeForm = new NewBikeView(_service as BikeService, null);
                             bikeForm.Show();
                         }
-                        if (typeof(TItem) == typeof(Review) && selectedItem!=null)
+                        else if (typeof(TItem) == typeof(Review) && selectedItem != null)
                         {
                             var reviewForm = new NewReviewView(_service as ReviewService, selectedItem as Review);
                             reviewForm.Show();
+                        }
+                        else {
+                            MessageBox.Show("Вы не можете добавить этот объект",
+            "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
 
 
@@ -74,13 +78,19 @@ namespace BikeRental.ViewModel
                   (removeCommand = new RelayCommand(obj =>
                   {
                       TItem item = obj as TItem;
-                      if (item != null)
+                      if (item != null && !(item is Bike))
                       {
                           if (!(item is Booking))
                           {
                               Items.Remove(item);
                           }
                           _service.RemoveItem(item);
+                      }
+                      else 
+                      {
+                          MessageBox.Show("Невозможно удалить велосипед",
+                              "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
                       }
                   },
                  (obj) => Items.Count > 0));
@@ -119,6 +129,7 @@ namespace BikeRental.ViewModel
                             var newForm = new NewPaymentView(_service as PaymentService, selectedItem as Payment);
                             newForm.Show();
                         }
+                         
                     },
 
                     (obj) => SelectedItem != null));

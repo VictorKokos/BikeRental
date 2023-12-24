@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BikeRental;
@@ -75,6 +76,8 @@ namespace BikeRental.ViewModel
                         {
                             // Если любое поле UserAccount равно null, установить IsLoggedIn в false
                             SessionState.IsLoggedIn = false;
+                            MessageBox.Show("Вы не заполнили все поля",
+            "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     },
                     canExecute: parameter =>
@@ -119,7 +122,14 @@ namespace BikeRental.ViewModel
                             else
                             {
                                 SessionState.IsLoggedIn = false;
+                                MessageBox.Show("Неверное имя пользователя или пароль",
+       "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверное имя пользователя",
+            "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     },
                     canExecute: parameter =>

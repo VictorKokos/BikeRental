@@ -84,6 +84,19 @@ namespace BikeRental.ViewModel
             }
         }
 
+        public bool AreAllPropertiesNotNull(object obj)
+        {
+            var type = obj.GetType();
+            var properties = type.GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.GetValue(obj) == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private RelayCommand _saveCommand;
         public RelayCommand SaveCommand
@@ -95,7 +108,18 @@ namespace BikeRental.ViewModel
                     {
                         if (_isNewItem)
                         {
-                            _service.AddItem(NewItem);
+
+                            if (AreAllPropertiesNotNull(NewItem))
+                            {
+                                _service.AddItem(NewItem);
+                            }
+
+                            else 
+                            {
+                                MessageBox.Show("Невозможно добавить",
+                           "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                            }
                         }
                         else
                         {

@@ -14,4 +14,7 @@ namespace BikeRental.View
         public static bool IsLoggedIn { get; set; }
     }
 
+
+
+
 }
